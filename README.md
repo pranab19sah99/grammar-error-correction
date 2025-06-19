@@ -1,47 +1,101 @@
+Certainly. Here's the updated `README.md` content **without emojis**, reflecting the current usage:
+
+---
+
 # grammar-error-correction
-A grammar correction app that detects and fixes sentence structure, subject-verb agreement, punctuation, and word usage errors. Built with Flask and Python, featuring a simple web interface.
 
+A grammar correction application that detects and fixes sentence structure, subject-verb agreement, punctuation, and word usage errors.
+Built with **Flask** and **Python**, this project uses a corpus-based language model (trained on JFLEG) to perform grammar correction through a simple web interface.
 
+---
 
-### Prerequisites
+## Features
 
-Ensure you have **Python** installed, either directly or through a **Miniconda** environment.
+* Corpus-driven grammar correction (no hardcoded rules)
+* N-gram language model built from the JFLEG dataset
+* Interactive web interface for testing corrections
+* Supports both direct text input and file upload
 
-### Step 1: Install Flask
+---
 
-Open a terminal or command prompt and run:
+## Prerequisites
+
+* Python 3.8 or above
+* pip (Python package installer)
+
+---
+
+## Step 1: Install Dependencies
+
+You can optionally create a virtual environment:
 
 ```bash
-pip install Flask
+python -m venv venv
+source venv/bin/activate   # On Windows: venv\Scripts\activate
 ```
 
-### Step 2: Set Up the Project
-
-Copy all files into your working directory.
-
-### Step 3: Launch the Backend Server
-
-Run the following command:
+Then install the required libraries:
 
 ```bash
-python ./backend.py
+pip install -r requirements.txt
 ```
 
-You should see output similar to:
+The `requirements.txt` file should contain:
 
 ```
-Running on http://127.0.0.1:5000
+Flask
+pandas
 ```
 
-You can either **Ctrl+Click** the link or copy it into your browser to access the application.
+---
 
-### Step 4: Add Your Backend Logic
+## Step 2: Prepare the Corpus
 
-To extend the backend functionality, edit the `backend.py` file.
-Specifically, modify the following function:
+Download the [JFLEG corpus](https://www.kaggle.com/datasets/thedevastator/jfleg-english-grammatical-error-benchmark) from Kaggle.
+Place the file in the following location:
 
-```python
-def checkGrammar(data):
-    # Your logic here
+```
+./corpus/jfleg.csv
 ```
 
+If the `corpus` directory does not exist, create it and add the CSV file there.
+
+---
+
+## Step 3: Run the Flask Server
+
+Launch the backend server:
+
+```bash
+python backend.py
+```
+
+You should see an output similar to:
+
+```
+Running on http://127.0.0.1:5000/
+```
+
+Open this link in your browser.
+
+---
+
+## Step 4: Use the Web Interface
+
+The interface supports:
+
+* Typing a sentence in the textbox (e.g., `He came to saw me`) and submitting it
+* Uploading a `.txt` file for correction
+
+Corrected output is returned in the same interface.
+
+---
+
+## Customization
+
+To modify the correction logic, edit the `checkGrammar(data)` function in `backend.py`.
+This function uses a statistical language model trained on the corpus to evaluate and correct grammar in user input.
+
+---
+
+Let me know if you also want help creating a sample corpus CSV or `requirements.txt` file.
