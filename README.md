@@ -1,7 +1,3 @@
-Certainly. Here's the updated `README.md` content **without emojis**, reflecting the current usage:
-
----
-
 # grammar-error-correction
 
 A grammar correction application that detects and fixes sentence structure, subject-verb agreement, punctuation, and word usage errors.
@@ -96,6 +92,4 @@ Corrected output is returned in the same interface.
 To modify the correction logic, edit the `checkGrammar(data)` function in `backend.py`.
 This function uses a statistical language model trained on the corpus to evaluate and correct grammar in user input.
 
----
 
-Let me know if you also want help creating a sample corpus CSV or `requirements.txt` file.
