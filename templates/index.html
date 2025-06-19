@@ -1,0 +1,25 @@
+<!-- NLP Apps Assignment 1 : Grammar Check Frontend -->
+
+<html>
+    <head>
+        <title>Grammar Check - NLP Apps - Assignment I</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+    </head>
+
+    <body>
+        <h1>Grammar Check - NLP Apps - Assignment I</h1>
+        <hr />
+        <p>Please type your text here: <br />
+            <textarea id="txt" cols="40" rows="5"></textarea> <br />
+            <button onclick="checkText()">Check</button> 
+        </p>
+        <p>Select File for Grammar Check: <button onclick="checkFile()">Select</button> </p>
+        <hr />
+        <p>
+            Output of Grammar Check: <br />
+            <textarea id="outtxt" cols="40" rows="10" readonly></textarea>
+        </p>
+         <div id="response"></div>
+    </body>
+</html>
