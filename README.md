@@ -30,17 +30,26 @@ python -m venv venv
 source venv/bin/activate   # On Windows: venv\Scripts\activate
 ```
 
-Then install the required libraries:
+Then install the dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-The `requirements.txt` file should contain:
+Your `requirements.txt` should contain:
 
 ```
 Flask
 pandas
+torch
+spacy
+git+https://github.com/PrithivirajDamodaran/Gramformer.git
+```
+
+After that, download the spaCy English language model:
+
+```bash
+python -m spacy download en_core_web_sm
 ```
 
 ---
@@ -80,7 +89,7 @@ Open this link in your browser.
 
 The interface supports:
 
-* Typing a sentence in the textbox (e.g., `He came to saw me`) and submitting it
+* Typing a sentence in the textbox (e.g., *He came to saw me*) and submitting it
 * Uploading a `.txt` file for correction
 
 Corrected output is returned in the same interface.
@@ -92,4 +101,51 @@ Corrected output is returned in the same interface.
 To modify the correction logic, edit the `checkGrammar(data)` function in `backend.py`.
 This function uses a statistical language model trained on the corpus to evaluate and correct grammar in user input.
 
+---
 
+## Troubleshooting
+
+If you encounter issues during installation or execution, verify that:
+
+* All dependencies installed successfully using `pip install -r requirements.txt`
+* The `en_core_web_sm` model was downloaded using `python -m spacy download en_core_web_sm`
+* The `corpus/jfleg.csv` file exists in the correct path
+* The Flask server has access to required model files and data
+
+---
+
+## Examples
+
+### Example 1: Direct Text Input
+
+**Input:**
+
+```
+He came to saw me
+```
+
+**Corrected Output:**
+
+```
+He came to see me.
+```
+
+---
+
+### Example 2: Uploading a Text File
+
+**File Content (example.txt):**
+
+```
+I is baking today
+He came to saw me
+```
+
+**Corrected Output:**
+
+```
+I am baking today.
+He came to see me.
+```
+
+---

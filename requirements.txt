@@ -1,2 +1,5 @@
 Flask
 pandas
+torch
+spacy
+git+https://github.com/PrithivirajDamodaran/Gramformer.git
